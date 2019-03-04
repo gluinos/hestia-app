@@ -8,9 +8,9 @@ class Landing extends Component {
         <Container className="d-flex h-100">
             <Row className="align-self-center w-100">
               <Col className="col-12 mx-auto">
-                <h1>Project Hestia</h1>
-                <p className="txt-light">
-                    Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>. Quisque eu eros nisl. Donec sollicitudin nisl nisi, sit amet rutrum nibh faucibus sit amet. In a efficitur dui. Nunc at sagittis urna. Quisque venenatis nec risus quis eleifend. Fusce id nulla in urna tristique iaculis. In et consectetur risus, nec commodo justo. In augue enim, efficitur ac commodo quis, tempus ac arcu. Sed porta dolor ultrices, pellentesque tellus eu, mollis mi. Phasellus et condimentum odio. Curabitur condimentum rhoncus sem, eget sagittis eros rhoncus sit amet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ac felis aliquam orci eleifend faucibus vitae sit amet mauris. Fusce vel magna mi. Aenean commodo pellentesque tellus, ut iaculis est auctor et.
+                <h1 className="display-4">Project Hestia</h1>
+                <p className="txt-light lead">
+                    Project Hestia is a nation-wide initiative to help document and protect transient peoples in the United States. Our central, cloud-based service -- powered by MongoDB Atlas -- allows shelters around the nation to collectively maintain a comprehensive knowledge database of their patrons such that they may better help them. Additionally, we have developed a simple clip that can visually and audibly warn its wearer of approaching inclement weather such that they may reach a shelter or make other arrangements in time. Ultimately, our mission is simple: <i>no one should be forgotten</i>.
                 </p>
                 <Button className="btn-rounded"><FontAwesomeIcon icon="plus-circle" /> Register</Button>
                 <p className="text-center">
