@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import MainNav from './MainNav.js';
+import { ContentContainer, SwingLeftContent, SwingRightContent } from './Animations.js';
 
 class RegisterForm extends Component {
   render() {
     return (
       <Form>
-        <Row form>
+        <SwingLeftContent><Row form>
           <Col md={6}>
             <FormGroup>
               <Label for="exampleEmail">Email</Label>
@@ -21,16 +22,16 @@ class RegisterForm extends Component {
               <Input type="password" name="password" id="examplePassword" placeholder="password" />
             </FormGroup>
           </Col>
-        </Row>
-        <FormGroup>
+        </Row></SwingLeftContent>
+        <SwingLeftContent><FormGroup>
           <Label for="exampleAddress">Address</Label>
           <Input type="text" name="address" id="exampleAddress" placeholder="1234 Main St"/>
-        </FormGroup>
-        <FormGroup>
+        </FormGroup></SwingLeftContent>
+        <SwingLeftContent><FormGroup>
           <Label for="exampleAddress2">Address 2</Label>
           <Input type="text" name="address2" id="exampleAddress2" placeholder="Apartment, studio, or floor"/>
-        </FormGroup>
-        <Row form>
+        </FormGroup></SwingLeftContent>
+        <SwingLeftContent><Row form>
           <Col md={6}>
             <FormGroup>
               <Label for="exampleCity">City</Label>
@@ -49,7 +50,7 @@ class RegisterForm extends Component {
               <Input type="text" name="zip" id="exampleZip"/>
             </FormGroup>
           </Col>
-        </Row>
+        </Row></SwingLeftContent>
       </Form>
     );
   }
@@ -60,21 +61,21 @@ class SignInForm extends Component {
     return (
       <Form>
         <FormGroup>
-          <Row form>
+          <SwingRightContent><Row form>
             <Col md={6}/>
             <Col md={6}>
               <Input type="email" name="username" id="username" placeholder="user@example.com"/>
             </Col>
-          </Row>
+          </Row></SwingRightContent>
         </FormGroup>
-        <FormGroup>
+        <SwingRightContent><FormGroup>
           <Row form>
             <Col md={6}/>
             <Col md={6}>
               <Input type="password" name="password" id="password" placeholder="password"/>
             </Col>
           </Row>
-        </FormGroup>
+        </FormGroup></SwingRightContent>
       </Form>
     );
   }
@@ -84,22 +85,26 @@ class SignIn extends Component {
   render() {
     return (
       <Fragment>
-        <MainNav target={3}/>
+        <MainNav target={2}/>
         <Container className="d-flex h-100">
             <Row className="align-self-center w-50 text-left">
               <Col className="col-12 mx-auto h-100">
-                <h1 className="display-5">Register</h1>
+                <ContentContainer>
+                <SwingLeftContent><h1 className="display-5">Register</h1></SwingLeftContent>
                 <RegisterForm/>
-                <Button className="btn-rounded"><FontAwesomeIcon icon="plus-circle" /> Register</Button>
+                <SwingLeftContent><Button className="btn-rounded"><FontAwesomeIcon icon="plus-circle" /> Submit</Button></SwingLeftContent>
+                </ContentContainer>
               </Col>
             </Row>
             <Row className="align-self-center w-50 text-right">
               <Col className="col-12 mx-auto h-100">
-                <h1 className="display-5">Sign In</h1>
+                <ContentContainer>
+                <SwingRightContent><h1 className="display-5">Sign In</h1></SwingRightContent>
                 <SignInForm/>
                 <LinkContainer to="/signin">
-                  <Button className="btn-rounded"><FontAwesomeIcon icon="check-circle" /> Sign In</Button>
+                  <SwingRightContent><Button className="btn-rounded"><FontAwesomeIcon icon="check-circle" /> Sign In</Button></SwingRightContent>
                 </LinkContainer>
+                </ContentContainer>
               </Col>
             </Row>
         </Container>
