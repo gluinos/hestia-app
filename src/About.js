@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import MainNav from './MainNav.js';
 
 class About extends Component {
