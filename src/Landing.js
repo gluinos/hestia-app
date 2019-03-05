@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container, Row, Col, Button } from 'reactstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import MainNav from './MainNav.js';
 
 class Landing extends Component {
@@ -15,9 +16,11 @@ class Landing extends Component {
                 <p className="txt-light lead">
                     <i>No one should be forgotten.</i>
                 </p>
-                <Button className="btn-rounded"><FontAwesomeIcon icon="plus-circle" /> Register</Button>
+                <LinkContainer to="/signin">
+                  <Button className="btn-rounded"><FontAwesomeIcon icon="plus-circle" /> Register</Button>
+                </LinkContainer>
                 <p className="footer text-center">
-                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'facebook']}/></a> <a href="https://www.github.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/></a> <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'twitter-square']}/></a>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'facebook']}/></a> <a href="https://github.com/gluinos/hestia-app" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/></a> <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'twitter-square']}/></a>
                 </p>
               </Col>
             </Row>
