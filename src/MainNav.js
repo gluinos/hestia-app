@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { NavLinkWrapper } from './Animations.js';
+import { Bubble } from './Animations.js';
 
 class MainNav extends Component {
   render() {
@@ -11,22 +11,17 @@ class MainNav extends Component {
          <Nav className="justify-content-end">
            <NavItem>
              <LinkContainer to="/">
-               <NavLinkWrapper><NavLink disabled={(this.props.target === 0) ? "disabled" : ""} href="/">Home</NavLink></NavLinkWrapper>
+               <Bubble><NavLink disabled={(this.props.target === 0) ? "disabled" : ""} href="/">Home</NavLink></Bubble>
              </LinkContainer>
            </NavItem>
            <NavItem>
              <LinkContainer to="/about">
-               <NavLinkWrapper><NavLink disabled={(this.props.target === 1) ? "disabled" : ""} href="/about">About</NavLink></NavLinkWrapper>
-             </LinkContainer>
-           </NavItem>
-           <NavItem>
-             <LinkContainer to="/contact">
-               <NavLinkWrapper><NavLink disabled={(this.props.target === 2) ? "disabled" : ""} href="/contact">Contact</NavLink></NavLinkWrapper>
+               <Bubble><NavLink disabled={(this.props.target === 1) ? "disabled" : ""} href="/about">About</NavLink></Bubble>
              </LinkContainer>
            </NavItem>
            <NavItem>
              <LinkContainer to="/signin">
-               <NavLinkWrapper><NavLink disabled={(this.props.target === 3) ? "disabled" : ""} href="/signin">Sign In <FontAwesomeIcon icon="sign-in-alt"/></NavLink></NavLinkWrapper>
+               <Bubble><NavLink disabled={(this.props.target === 2) ? "disabled" : ""} href="/signin">Sign In <FontAwesomeIcon icon="sign-in-alt"/></NavLink></Bubble>
              </LinkContainer>
            </NavItem>
          </Nav>
