@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap';
+import { Container, Row, Col, Card, CardTitle, CardText, Nav, NavItem, NavLink } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import BackNav from './BackNav.js';
+import { StaticPie } from './Charts.js';
 import { Bubble, ContentContainer, SwingLeftContent } from '../Animations.js';
 
 class Dashboard extends Component {
@@ -26,9 +27,31 @@ class Dashboard extends Component {
                        </Nav>
                      </div>
                    </div>
-                   <div>
-
-                   </div>
+                   <Container>
+                     <Row>
+                       <Col md="4" className="text-center">
+                         <SwingLeftContent><Card body>
+                           <CardTitle>Analytic 1</CardTitle>
+                           <StaticPie/>
+                           <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                         </Card></SwingLeftContent>
+                       </Col>
+                       <Col md="4" className="text-center">
+                         <SwingLeftContent><Card body>
+                           <CardTitle>Analytic 2</CardTitle>
+                           <StaticPie/>
+                           <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                         </Card></SwingLeftContent>
+                       </Col>
+                       <Col md="4" className="text-center">
+                         <SwingLeftContent><Card body>
+                           <CardTitle>Analytic 3</CardTitle>
+                           <StaticPie/>
+                           <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                         </Card></SwingLeftContent>
+                       </Col>
+                     </Row>
+                   </Container>
                  </main>
                </Row>
              </Container>
