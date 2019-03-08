@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { Container, Nav, NavItem, NavLink } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Bubble } from '../Animations.js';
 
 class FrontNav extends Component {
   render() {
      return (
-       <div className="sticky-top" style={{ height: "0%", paddingRight: "5%" }}>
+       <Container className="sticky-top" style={{ height: "0%" }}>
          <Nav className="justify-content-end">
            <NavItem>
              <LinkContainer to="/">
@@ -25,7 +25,7 @@ class FrontNav extends Component {
              </LinkContainer>
            </NavItem>
          </Nav>
-       </div>
+       </Container>
      );
    }
  }
