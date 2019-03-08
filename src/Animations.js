@@ -26,7 +26,7 @@ const RoutesContainer = posed.div({
 });
 
 const ContentContainer = posed.div({
-  enter: { staggerChildren: 25 }
+  enter: { staggerChildren: 50 }
 });
 
 const SwingLeftContent = posed.div({
