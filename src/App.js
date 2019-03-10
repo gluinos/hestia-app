@@ -12,17 +12,30 @@ import { RoutesContainer } from './Animations.js';
 import Landing from './front/Landing.js';
 import About from './front/About.js';
 import SignIn from './front/SignIn.js';
+import FrontNav from './front/FrontNav.js';
 // Back
 import Dashboard from './back/Dashboard.js';
 import Add from './back/Add.js';
 import People from './back/People.js';
 import Settings from './back/Settings.js';
 import Request from './back/Request.js';
+import BackNav from './back/BackNav.js';
 
 library.add( fab, faPlusCircle, faSignInAlt, faCheckCircle,
              faTachometerAlt, faUsers, faUserPlus,
              faCloudSunRain, faCog, faMicrochip,
              faSignOutAlt );
+
+class Nav extends Component {
+    render() {
+        if (this.props.target.split("/")[1] === "dashboard") {
+            return ( <BackNav target={this.props.target} /> );
+        }
+        else {
+            return ( <FrontNav target={this.props.target} /> );
+        }
+    }
+}
 
 class App extends Component {
   render() {
@@ -30,6 +43,8 @@ class App extends Component {
       <Router>
         <Route
           render={({ location }) => (
+            <React.Fragment>
+              <Nav target={ location.pathname }/>
               <PoseGroup style={{ height: "100%", minWidth: "768px" }}>
                 <RoutesContainer key={ location.pathname }>
                   <Route exact path="/" component={Landing}/>
@@ -47,6 +62,7 @@ class App extends Component {
                                render={(props) => <Request {...props} isAuthed={true}/>} />
                 </RoutesContainer>
               </PoseGroup>
+            </React.Fragment>
           )}
         />
       </Router>

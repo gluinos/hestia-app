@@ -20,9 +20,10 @@ const Bubble = posed.div({
 const RoutesContainer = posed.div({
     enter: {
       opacity: 1,
-      beforeChildren: true
+      beforeChildren: 50,
+      delay: 50
     },
-    exit: { opacity: 1 }
+    exit: { opacity: 0 }
 });
 
 const ContentContainer = posed.div({
@@ -35,8 +36,8 @@ const SwingLeftContent = posed.div({
 });
 
 const SwingRightContent = posed.div({
-  enter: { x: 50, opacity: 1 },
-  exit: { x: 0, opacity: 0 }
+  enter: { x: 0, opacity: 1 },
+  exit: { x: -50, opacity: 0 }
 });
 
 const FadeContent = posed.div({

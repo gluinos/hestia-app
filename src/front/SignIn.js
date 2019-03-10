@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import FrontNav from './FrontNav.js';
 import { ContentContainer, SwingLeftContent, SwingRightContent } from '../Animations.js';
 
 class RegisterForm extends Component {
@@ -85,26 +84,25 @@ class SignIn extends Component {
   render() {
     return (
       <Fragment>
-        <FrontNav target={2}/>
         <Container className="d-flex h-100">
           <Row className="align-self-center w-50 text-left">
             <Col className="col-12 mx-auto h-100">
               <ContentContainer>
-              <SwingLeftContent><h1 className="display-5">Register</h1></SwingLeftContent>
-              <RegisterForm/>
-              <SwingLeftContent><Button className="btn-rounded"><FontAwesomeIcon icon="plus-circle" /> Submit</Button></SwingLeftContent>
-              </ContentContainer>
+                <SwingLeftContent><h1 className="display-5">Register</h1></SwingLeftContent>
+                <RegisterForm/>
+                <SwingLeftContent><Button className="btn-rounded"><FontAwesomeIcon icon="plus-circle" /> Submit</Button></SwingLeftContent>
+                </ContentContainer>
             </Col>
           </Row>
           <Row className="align-self-center w-50 text-right">
             <Col className="col-12 mx-auto h-100">
               <ContentContainer>
-              <SwingRightContent><h1 className="display-5">Sign In</h1></SwingRightContent>
-              <SignInForm/>
-              <LinkContainer to="/dashboard">
-                <SwingRightContent><Button className="btn-rounded"><FontAwesomeIcon icon="check-circle" /> Sign In</Button></SwingRightContent>
-              </LinkContainer>
-              </ContentContainer>
+                <SwingRightContent><h1 className="display-5">Sign In</h1></SwingRightContent>
+                <SignInForm/>
+                <LinkContainer to="/dashboard">
+                  <SwingRightContent><Button className="btn-rounded"><FontAwesomeIcon icon="check-circle" /> Sign In</Button></SwingRightContent>
+                </LinkContainer>
+                </ContentContainer>
             </Col>
           </Row>
         </Container>

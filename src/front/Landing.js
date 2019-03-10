@@ -3,13 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { ContentContainer, SwingLeftContent, FadeContent } from '../Animations.js';
-import FrontNav from './FrontNav.js';
 
 class Landing extends Component {
   render() {
     return (
       <Fragment>
-        <FrontNav target={0}/>
         <Container className="d-flex h-100">
             <Row className="align-self-center w-100">
               <Col className="col-12 mx-auto">

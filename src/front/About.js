@@ -1,13 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import FrontNav from './FrontNav.js';
 import { Bubble, ContentContainer, SwingLeftContent, FadeContent, FastFadeContent } from '../Animations.js';
 
 class About extends Component {
   render() {
     return (
       <Fragment>
-        <FrontNav target={1}/>
         <ContentContainer>
         <Container className="d-flex" style={{ paddingTop: "100px" }}>
             <Row className="w-100">
