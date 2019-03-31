@@ -4,6 +4,7 @@ import { Container, Row, Nav, NavItem, NavLink } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Bubble, ContentContainer, SwingLeftContent } from '../Animations.js';
 import BackNav from './BackNav.js';
+import { RequestForm } from './BackForms.js';
 
 class Dashboard extends Component {
   render() {
@@ -27,7 +28,7 @@ class Dashboard extends Component {
                      </div>
                    </div>
                    <div>
-
+                     <RequestForm/>
                    </div>
                  </main>
                </Row>
