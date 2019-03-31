@@ -50,7 +50,7 @@ class CheckIn extends Component {
                   <Col md={3}/>
                   <Col md={6} className="text-center">
                     <Button id="checkin" className="btn-rounded">
-                      <FontAwesomeIcon icon="user-check" /> Check In
+                      <FontAwesomeIcon icon="check-circle" /> Submit
                     </Button>
                   </Col>
                   <Col md={3}/>
@@ -82,7 +82,8 @@ class Person extends Component {
             isEdit: false
         };
     }
-    nav(thisID) {
+    nav(evt, thisID) {
+        evt.preventDefault();
         this.setState({
             isProfile: (thisID === "profile"),
             isCheckIn: (thisID === "checkin"),
@@ -118,15 +119,15 @@ class Person extends Component {
                   <Edit hidden={!this.state.isEdit} person={person}/>
                 </ModalBody>
                 <ModalFooter>
-                  <Button id="profile" className="btn-rounded no-shadow" onClick={() => this.nav("profile")} disabled={this.state.isProfile}>
+                  <Bubble><NavLink href="" onClick={(evt) => this.nav(evt, "profile")} disabled={this.state.isProfile}>
                     <FontAwesomeIcon icon="user" /> Profile
-                  </Button>
-                  <Button id="checkin" className="btn-rounded no-shadow" onClick={() => this.nav("checkin")} disabled={this.state.isCheckIn}>
+                  </NavLink></Bubble>
+                  <Bubble><NavLink href="" onClick={(evt) => this.nav(evt, "checkin")} disabled={this.state.isCheckIn}>
                     <FontAwesomeIcon icon="user-check" /> Check In
-                  </Button>
-                  <Button id="edit" className="btn-rounded no-shadow" onClick={() => this.nav("edit")} disabled={this.state.isEdit}>
+                  </NavLink></Bubble>
+                  <Bubble><NavLink href="" onClick={(evt) => this.nav(evt, "edit")} disabled={this.state.isEdit}>
                     <FontAwesomeIcon icon="user-edit" /> Edit
-                  </Button>
+                  </NavLink></Bubble>
                   <Button className="btn-rounded no-shadow" onClick={this.toggle}>
                     <FontAwesomeIcon icon="times-circle" /> Close
                   </Button>
@@ -158,6 +159,7 @@ class Population extends Component {
               { People }
               <tr>
                 <td><SwingLeftContent><p className="muted"><i>Search for specific results...</i></p></SwingLeftContent></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
