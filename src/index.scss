@@ -32,6 +32,20 @@ a.disabled
     background-color: $bg-secondary !important;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+.btn.btn-rounded.disabled:hover {
+    color: $bg-secondary !important;
+    border-radius: 20px;
+    border-color: $bg-secondary !important;
+    background-color: #fff !important;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.08), 0 6px 20px 0 rgba(0,0,0,0.08);
+}
+
+.btn.btn-rounded.no-shadow {
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.0), 0 0 0 0 rgba(0,0,0,0);
+}
+.btn.btn-rounded.no-shadow:hover {
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.0), 0 0 0 0 rgba(0,0,0,0);
+}
 
 .txt-light {
     color: $hl-secondary !important;
@@ -64,7 +78,7 @@ p.footer {
     text-align: center;
 }
 
-input {
+input, textarea {
     border-color: $bg-secondary !important;
 }
 
