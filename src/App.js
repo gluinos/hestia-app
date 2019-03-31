@@ -5,7 +5,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faPlusCircle, faSignInAlt, faCheckCircle,
          faTachometerAlt, faUsers, faUserPlus,
          faCloudSunRain, faCog, faMicrochip,
-         faSignOutAlt, faUser, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+         faSignOutAlt, faUser, faTimesCircle,
+         faUserEdit, faUserCheck } from '@fortawesome/free-solid-svg-icons';
 import { PoseGroup } from 'react-pose';
 import { RoutesContainer } from './Animations.js';
 // Front
@@ -23,7 +24,8 @@ import Request from './back/Request.js'; 
 library.add( fab, faPlusCircle, faSignInAlt, faCheckCircle,
              faTachometerAlt, faUsers, faUserPlus,
              faCloudSunRain, faCog, faMicrochip,
-             faSignOutAlt, faUser, faTimesCircle );
+             faSignOutAlt, faUser, faTimesCircle,
+             faUserEdit, faUserCheck );
 
 class Nav extends Component {
     render() {
@@ -50,7 +52,7 @@ class App extends Component {
                   <Route exact path="/about" component={About}/>
                   <Route exact path="/signin" component={SignIn}/>
                   <Route exact path="/dashboard"
-                               render={(props) => <Dashboard {...props} isAuthed={true} name={"Test Shelter"}/>} />
+                               render={(props) => <Dashboard {...props} isAuthed={true} name={"Open Arms Homeless Shelter"}/>} />
                   <Route exact path="/dashboard/add"
                                render={(props) => <Add {...props} isAuthed={true}/>} />
                   <Route exact path="/dashboard/people"
