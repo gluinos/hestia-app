@@ -5,6 +5,7 @@ import { Container, Row, Col, Nav, NavItem, NavLink, Table, Button,
          ModalHeader } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Bubble, ContentContainer, SwingLeftContent } from '../Animations.js';
+import { AddForm } from './BackForms.js';
 import BackNav from './BackNav.js';
 import Loader from './Loader.js';
 
@@ -12,19 +13,81 @@ function RandTime() {
     return Date.now()-Math.round(Math.pow(10,10)*Math.random());
 }
 
-const people=[{ checkin:RandTime(), clip:"92eba03", id:RandTime(), name:"Jonathan Guiang" },
-              { checkin:RandTime(), clip:"03mfn12", id:RandTime(), name:"Rosemary Orozco" },
-              { checkin:RandTime(), clip:"75akd02", id:RandTime(), name:"Gabriel Hernandez" },
-              { checkin:RandTime(), clip:"74bck32", id:RandTime(), name:"Wilson Chen" }];
+const people=[{ checkin:RandTime(), clip:"92eba03", id:RandTime(), name:["Jonathan", "Kasuke", "Guiang"],
+                notes:"These are some example notes." },
+              { checkin:RandTime(), clip:"03mfn12", id:RandTime(), name:["Rosemary", "Mona", "Orozco"],
+                notes:"" },
+              { checkin:RandTime(), clip:"75akd02", id:RandTime(), name:["Gabriel", "J.", "Hernandez"],
+                notes:"" },
+              { checkin:RandTime(), clip:"74bck32", id:RandTime(), name:["Wilson", "", "Chen"],
+                notes:"" }];
+
+class Profile extends Component {
+    render() {
+        return (
+            <p hidden={this.props.hidden}>
+              <b>Personal ID:</b> { this.props.person.id }<br/>
+              <b>Notes:</b><br/>
+              { (this.props.person.notes !== "") ? this.props.person.notes : <i>No notes written.</i> }
+            </p>
+        );
+    }
+}
+
+class CheckIn extends Component {
+    render() {
+        return (
+            <Form hidden={this.props.hidden}>
+              <FormGroup>
+                <Row form>
+                  <Col md={3}/>
+                  <Col md={6} className="text-center">
+                    <Input type="text" name="clip" id="clip" placeholder="Clip ID"/>
+                  </Col>
+                  <Col md={3}/>
+                </Row>
+                <Row form style={{ paddingTop:"15px" }}>
+                  <Col md={3}/>
+                  <Col md={6} className="text-center">
+                    <Button id="checkin" className="btn-rounded">
+                      <FontAwesomeIcon icon="user-check" /> Check In
+                    </Button>
+                  </Col>
+                  <Col md={3}/>
+                </Row>
+              </FormGroup>
+            </Form>
+        );
+    }
+}
+
+class Edit extends Component {
+    render() {
+        return (
+            <div hidden={this.props.hidden}><AddForm name={this.props.person.name} notes={this.props.person.notes}/></div>
+        );
+    }
+}
 
 class Person extends Component {
     constructor(props) {
         super(props);
+        this.nav = this.nav.bind(this);
         this.toggle = this.toggle.bind(this);
         this.toDate = this.toDate.bind(this);
         this.state = {
-            showModal: false
+            showModal: false,
+            isProfile: true,
+            isCheckIn: false,
+            isEdit: false
         };
+    }
+    nav(thisID) {
+        this.setState({
+            isProfile: (thisID === "profile"),
+            isCheckIn: (thisID === "checkin"),
+            isEdit: (thisID === "edit")
+        });
     }
     toggle() {
         this.setState({
@@ -38,24 +101,35 @@ class Person extends Component {
     }
     render() {
         var person = this.props.person;
-        var index = this.props.index;
         return (
             <Fragment>
-              <tr key={index}>
+              <tr>
                 <td><SwingLeftContent>{ this.toDate(person.checkin) }</SwingLeftContent></td>
                 <td><SwingLeftContent>{ person.clip }</SwingLeftContent></td>
                 <td><SwingLeftContent>{ person.id }</SwingLeftContent></td>
-                <td><SwingLeftContent>{ person.name }</SwingLeftContent></td>
-                <td><SwingLeftContent><Button outline onClick={this.toggle}><FontAwesomeIcon icon="user"/> Profile</Button></SwingLeftContent></td>
+                <td><SwingLeftContent>{ person.name.join(" ") }</SwingLeftContent></td>
+                <td><SwingLeftContent><Button className="btn-rounded no-shadow" onClick={this.toggle}><FontAwesomeIcon icon="user"/> Profile</Button></SwingLeftContent></td>
               </tr>
               <Modal isOpen={this.state.showModal} toggle={this.toggle} className="modal-lg">
-                <ModalHeader toggle={this.toggle}>{ person.name }</ModalHeader>
+                <ModalHeader toggle={this.toggle}>{ person.name.join(" ") }</ModalHeader>
                 <ModalBody style={{width:"100%"}}>
-                  <p>This is a test!</p>
+                  <Profile hidden={!this.state.isProfile} person={person}/>
+                  <CheckIn hidden={!this.state.isCheckIn}/>
+                  <Edit hidden={!this.state.isEdit} person={person}/>
                 </ModalBody>
                 <ModalFooter>
-                  <Button color="secondary" onClick={this.toggle} size="sm">
-                  <FontAwesomeIcon icon="times-circle" /> Close</Button>
+                  <Button id="profile" className="btn-rounded no-shadow" onClick={() => this.nav("profile")} disabled={this.state.isProfile}>
+                    <FontAwesomeIcon icon="user" /> Profile
+                  </Button>
+                  <Button id="checkin" className="btn-rounded no-shadow" onClick={() => this.nav("checkin")} disabled={this.state.isCheckIn}>
+                    <FontAwesomeIcon icon="user-check" /> Check In
+                  </Button>
+                  <Button id="edit" className="btn-rounded no-shadow" onClick={() => this.nav("edit")} disabled={this.state.isEdit}>
+                    <FontAwesomeIcon icon="user-edit" /> Edit
+                  </Button>
+                  <Button className="btn-rounded no-shadow" onClick={this.toggle}>
+                    <FontAwesomeIcon icon="times-circle" /> Close
+                  </Button>
                 </ModalFooter>
               </Modal>
             </Fragment>
@@ -65,8 +139,9 @@ class Person extends Component {
 
 class Population extends Component {
     render() {
-        const People = (this.props.people).map((person, index) =>
-          <Person person={person} index={index}/>
+        var cut = (this.props.people.length > 10) ? 10 : this.props.people.length;
+        const People = (this.props.people.slice(0,cut)).map((person, index) =>
+          <Person person={person} key={index}/>
         );
         return (
           <Table hover>
@@ -94,7 +169,7 @@ class Population extends Component {
 }
 
 
-class Dashboard extends Component {
+class People extends Component {
     constructor(props) {
         super(props);
         this.getPeople = this.getPeople.bind(this);
@@ -166,4 +241,4 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+export default People;
