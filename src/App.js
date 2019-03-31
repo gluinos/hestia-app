@@ -5,7 +5,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faPlusCircle, faSignInAlt, faCheckCircle,
          faTachometerAlt, faUsers, faUserPlus,
          faCloudSunRain, faCog, faMicrochip,
-         faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+         faSignOutAlt, faUser, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { PoseGroup } from 'react-pose';
 import { RoutesContainer } from './Animations.js';
 // Front
@@ -18,21 +18,20 @@ import Dashboard from './back/Dashboard.js';
 import Add from './back/Add.js';
 import People from './back/People.js';
 import Settings from './back/Settings.js';
-import Request from './back/Request.js';
-import BackNav from './back/BackNav.js';
+import Request from './back/Request.js'; 
 
 library.add( fab, faPlusCircle, faSignInAlt, faCheckCircle,
              faTachometerAlt, faUsers, faUserPlus,
              faCloudSunRain, faCog, faMicrochip,
-             faSignOutAlt );
+             faSignOutAlt, faUser, faTimesCircle );
 
 class Nav extends Component {
     render() {
-        if (this.props.target.split("/")[1] === "dashboard") {
-            return ( <BackNav target={this.props.target} /> );
+        if (this.props.target.split("/")[1] !== "dashboard") {
+            return ( <FrontNav target={this.props.target} /> );
         }
         else {
-            return ( <FrontNav target={this.props.target} /> );
+            return ( <div style={{width: "0%", height:"0%", opacity:"0"}}/> );
         }
     }
 }
