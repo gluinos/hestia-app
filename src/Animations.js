@@ -20,10 +20,10 @@ const Bubble = posed.div({
 const RoutesContainer = posed.div({
     enter: {
       opacity: 1,
-      beforeChildren: 50,
-      delay: 50
+      beforeChildren: 25,
+      delay: 25
     },
-    exit: { opacity: 0 }
+    exit: { opacity: 1 }
 });
 
 const ContentContainer = posed.div({
