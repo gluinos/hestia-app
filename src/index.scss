@@ -139,3 +139,18 @@ figcaption.figure-caption {
   font-size: .75rem;
   text-transform: uppercase;
 }
+
+.ql-toolbar, .ql-editor, .ql-container {
+  background-color: #fff !important;
+  border-color: $bg-secondary !important;
+}
+
+.ql-toolbar {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.ql-editor, .ql-container {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
