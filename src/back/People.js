@@ -14,7 +14,7 @@ function RandTime() {
 }
 
 const people=[{ checkin:RandTime(), clip:"92eba03", id:RandTime(), name:["Jonathan", "Kasuke", "Guiang"],
-                notes:"These are some example notes." },
+                notes:"These are some <i>example</i> <b>notes</b>." },
               { checkin:RandTime(), clip:"03mfn12", id:RandTime(), name:["Rosemary", "Mona", "Orozco"],
                 notes:"" },
               { checkin:RandTime(), clip:"75akd02", id:RandTime(), name:["Gabriel", "J.", "Hernandez"],
@@ -28,7 +28,7 @@ class Profile extends Component {
             <p hidden={this.props.hidden}>
               <b>Personal ID:</b> { this.props.person.id }<br/>
               <b>Notes:</b><br/>
-              { (this.props.person.notes !== "") ? this.props.person.notes : <i>No notes written.</i> }
+              { (this.props.person.notes !== "") ? <p dangerouslySetInnerHTML={{__html: this.props.person.notes}}/> : <i>No notes written.</i> }
             </p>
         );
     }

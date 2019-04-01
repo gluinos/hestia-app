@@ -1,7 +1,64 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import ReactQuill from 'react-quill';
+import PropTypes from 'prop-types';
 import { SwingLeftContent } from '../Animations.js';
+
+class Editor extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = { editorHtml: '', theme: 'snow' }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange (html) {
+  	this.setState({ editorHtml: html });
+  }
+
+  render () {
+    return (
+      <div>
+        <ReactQuill
+          theme={this.state.theme}
+          onChange={this.handleChange}
+          defaultValue={this.props.defaultValue}
+          modules={Editor.modules}
+          formats={Editor.formats}
+          bounds={'.app'}
+          placeholder={this.props.placeholder}
+         />
+       </div>
+     )
+  }
+}
+
+Editor.modules = {
+  toolbar: [
+    [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+    [{size: []}],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{'list': 'ordered'}, {'list': 'bullet'},
+     {'indent': '-1'}, {'indent': '+1'}],
+    ['link', 'image', 'video'],
+    ['clean']
+  ],
+  clipboard: {
+    // toggle to add extra line breaks when pasting HTML:
+    matchVisual: false,
+  }
+}
+
+Editor.formats = [
+  'header', 'font', 'size',
+  'bold', 'italic', 'underline', 'strike', 'blockquote',
+  'list', 'bullet', 'indent',
+  'link', 'image', 'video'
+]
+
+Editor.propTypes = {
+  placeholder: PropTypes.string,
+}
 
 class AddForm extends Component {
     render() {
@@ -33,9 +90,9 @@ class AddForm extends Component {
             </Row></SwingLeftContent>
             <SwingLeftContent><FormGroup>
               <Label for="notes">Notes</Label>
-              <Input type="textarea" name="notes" id="notes" placeholder="" defaultValue={this.props.notes}/>
+              <Editor placeholder={"Write something..."} defaultValue={this.props.notes}/>
             </FormGroup></SwingLeftContent>
-            <SwingLeftContent><Button className="btn-rounded"><FontAwesomeIcon icon="plus-circle" /> Submit</Button></SwingLeftContent>
+            <SwingLeftContent><Button className="btn-rounded"><FontAwesomeIcon icon="check-circle" /> Submit</Button></SwingLeftContent>
           </Form>
         );
     }
@@ -68,8 +125,8 @@ class RequestForm extends Component {
               </Col>
             </Row></SwingLeftContent>
             <SwingLeftContent><FormGroup>
-              <Label for="notes">Additional Details</Label>
-              <Input type="textarea" name="notes" id="notes" placeholder="" defaultValue={this.props.notes}/>
+              <Label for="details">Additional Details</Label>
+              <Input type="textarea" name="details" id="details" placeholder=""/>
             </FormGroup></SwingLeftContent>
             <Row>
               <Col md={4}>
